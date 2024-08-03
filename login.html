@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body{
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background:linear-gradient(135deg,crimson,yellow);
+            color: #333;
+        }
+        .card{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        form{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.219);
+            border: 1px solid white;
+            border-radius: 3px;
+            position: absolute;
+            top: 200px;
+            
+        }
+        #login{
+            width: 400px;
+            display: flex;
+            justify-content: center;
+        }
+
+        label{
+            margin: 10px 0 5px;
+        }
+        input{
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 10px;
+            border:1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+        #button button{
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: rgb(255, 255, 255);
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #button button:hover{
+            background-color: rgb(154, 154, 154);
+        }
+        #loginmessage{
+            margin-top: 20px;
+            color: red;
+            font-weight: bold;
+            text-align: center;
+        }
+
+section nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position:fixed;
+    right:0;
+    left:0;
+    background:linear-gradient(#ff6161,#ff9a3c);
+    box-shadow:0 0 10px black;
+    z-index: 1000;
+}
+section nav .logo img{
+    width: 100px;
+    cursor:pointer;
+    margin: 7px;
+}
+section nav ul{
+
+    list-style: none;
+    left: -200px;
+}
+section nav ul li{
+    display: inline-block;
+    margin:0 15px;
+}
+section nav ul li a{
+    font-family:sans-serif;
+    text-decoration: none;
+    color: black;
+    font-weight:bolder;
+    font-size:20px;
+}
+section nav ul li a::after{
+    content:'';
+    width:0;
+    height: 3px;
+    background: #155263;
+    display: block;
+    transition: 0.2s linear;
+}
+section nav ul li a:hover::after{
+    width: 100%;
+}
+section nav ul li a:hover{
+    color:#155263;
+}
+.main_image{
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    top: 130px;
+}
+.main_image img{
+    width: 500px;
+    height: 500px;
+    right:50px;
+}
+h2{
+    position: absolute;
+    top: 150px;
+    left:48%;
+}
+#loginmessage{
+    position: absolute;
+    z-index: 100;
+    left: 45%;
+    background-color: aliceblue;
+    bottom: 150px;
+    padding: 3px;
+}
+#passwordmsg{
+    position: absolute;
+    z-index: 100;
+    left: 45%;
+    background-color: rgb(243, 255, 156);
+    bottom: 150px;
+    padding: 3px;
+}
+#usermsg{
+    position: absolute;
+    z-index: 100;
+    left: 45%;
+    background-color: rgb(243, 255, 156);
+    bottom: 150px;
+    padding: 3px;
+}
+
+button{
+    width:100px;
+    height:40px;
+    font-size: 15px;
+    font-weight: bolder;
+    font-family: sans-serif;
+    border-radius: 50px;
+    border-color: #155263;
+    border-width: 6px;
+}
+button:hover{
+    background-color: rgb(154, 154, 154);
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<section>
+    <nav>
+        <div class="logo">
+            <img src="pokemon9.png" alt="err">
+        </div>
+
+    <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="pokedex.html">pokedex</a></li>
+    </ul>
+    <div>
+        <a href="signin.html">
+            <button>Sign In</button>
+        </a>
+        <a href="login.html">
+            <button>Login</button>
+        </a>
+    </div>
+    </nav>
+</section>
+<div class="main_image">
+    <img src="pokemon9.png" alt="err">
+</div>
+    
+<h2>login</h2>
+<div class="card">
+    <form id="login" >
+        <label for="username">username:</label>
+        <input type="text" name="username" id="username" required>
+        <label for="password">password:</label>
+        <input type="password" id="password" name="password" required>
+        <div id="button">
+            <button  type="submit">login</button>
+        </div>
+        
+    </form>
+</div>
+<p id="usermsg"></p>
+<p id="passwordmsg"></p>
+<p id="loginmessage"></p>
+</section>
+<script>
+    document.getElementById('login').addEventListener('submit',function(event) {
+        event.preventDefault();
+            // console.log("event log")
+            var username=document.getElementById('username').value;
+            var password=document.getElementById('password').value;
+            // console.log(username)
+            // console.log(password)
+            if(username=='user' && password=='password'){
+                document.getElementById('loginmessage').textContent="login successful";
+                document.getElementById('loginmessage').style.color="green";
+            }
+            
+            else if(username!='user' || password=='password'){
+                // console.log("1")
+                document.getElementById('usermsg').textContent="incorrect username";                
+                document.getElementById('usermsg').style.color="red";
+                if(password!='password'){
+                    // console.log("2")
+                document.getElementById('passwordmsg').textContent="incorrect password";                
+                document.getElementById('passwordmsg').style.color="red";
+            }
+            }
+    })
+
+</script>
+</body>
+</html>
